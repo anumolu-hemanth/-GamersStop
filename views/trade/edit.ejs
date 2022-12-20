@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+    <div class="profile-infoedit">
+       <form method="POST" action="/trades/<%= trade.id %>?_method=PUT">
+                <table>
+                    <tr>
+                        <td><label for="title">Title</label></td>
+                        <td><input type="text" name="title" id="title" value="<%= trade.title %>"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="imgurl">Image (enter an image url)</label></td>
+                        <td><input type="text" name="imgurl" id="imgurl" value="<%= trade.imgurl %>"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="category">Category </label></td>
+                        <td><input type="text" name="category" id="category" value="<%= trade.category %>"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="content">Content</label></td>
+                        <td><textarea rows="5" name="content" id="content" class="content"><%= trade.content %></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="status">Status</label></td>
+                        <td><input type="text" name="status" id="status" value="<%= trade.status %>"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button>Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+    </div>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs')%>
+<div class = "profile-info">
+        <p>Manage offer: </p>
+        <table>
+            <tr>
+                <td>
+                    <p><%=trade.title %></p><br>
+                    <img src='<%=trade.imgurl %>'/>
+                </td>
+                <td>
+                    <p><%= item.title %></p><br>
+                    <img src='<%=item.imgurl %>'/>
+                </td>
+                <td>
+                    <form>
+                        <% if(initiated){ %>
+                            <button type="submit" formmethod="POST" formaction="/users/canceloffer/<%=trade._id%>">Cancel Offer</button>
+                        <% } else { %>
+                            <button type="submit" formmethod="POST" formaction="/users/acceptoffer/<%=trade._id%>">Accept</button>
+                            <button type="submit" formmethod="POST" formaction="/users/canceloffer/<%=trade._id%>">Reject</button>
+                        <% } %>
+                    </form>
+                </td>
+            </tr>
+        </table>
+</div>
+<%- include('../partials/footer.ejs')%>

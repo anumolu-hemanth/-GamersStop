@@ -1,0 +1,80 @@
+<%- include('../partials/header.ejs')%>
+<div class = "profile-info">
+    <h2>Welcome, <%=user.firstName%></h2>
+    <% if(trades.length) { %>
+        <p>You have created the following trades</p>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Update/ Delete</th>
+            </tr>
+        <% trades.forEach (trade => { %>
+            <tr>
+                <td><a href="/trades/<%=trade.id%>"><%= trade.title %></a></td>
+                <td><%= trade.category %></td>
+                <td><%= trade.status %></td>
+                <td>
+                    <form>
+                        <% if(trade.initiated || trade.offered){ %>
+                            <button type="submit" formmethod="POST" formaction="/users/manageoffer/<%=trade.id%>">Manage Offer</button>
+                        <% } %>
+                        <button type="submit" formmethod="GET" formaction="/trades/<%=trade.id %>/edit">Update</button>
+                        <button type="submit" formmethod="POST" formaction="/trades/<%=trade.id %>?_method=DELETE">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+        </table>
+    <% } %>
+
+    <% if(watchlist.length) { %>
+        <p>You have watchlisted the following trades</p>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th> - </th>
+            </tr>
+        <% watchlist.forEach (trade => { %>
+            <tr>
+                <td><a href="/trades/<%=trade.id%>"><%= trade.title %></a></td>
+                <td><%= trade.category %></td>
+                <td><%= trade.status %></td>
+                <td>
+                    <form>
+                        <button type="submit" formmethod="POST" formaction="/trades/<%=trade.id %>/unwatch">Unwatch</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+        </table>
+    <% } %>
+
+    <% if(offers.length) { %>
+        <p>Your offers</p>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th> - </th>
+            </tr>
+        <% offers.forEach (offer => { %>
+            <tr>
+                <td><a href="/trades/<%=offer.offer_to%>"><%= offer.title %></a></td>
+                <td><%= offer.category %></td>
+                <td>Offer Pending</td>
+                <td>
+                    <form>
+                        <button type="submit" formmethod="POST" formaction="/users/canceloffer/<%=offer.offer_to%>">Cancel Offer</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+        </table>
+    <% } %>
+</div>
+<%- include('../partials/footer.ejs')%>

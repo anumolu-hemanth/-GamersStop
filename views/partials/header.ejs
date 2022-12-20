@@ -1,0 +1,54 @@
+<!--
+    Author -- Hemanth Kumar Anumolu,
+    Project Name -- Gamers Stop,
+    Project Description -- Website to buy, sell and trade games,
+    Remarks -- NBAD Milestone project-1
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>  
+        <link href="/css/main.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <a href="/"><img class="logo" src="/images/logo.png" alt="logo">
+                    <p class="brand-name">GAMERS STOP</p></a>
+            </div>
+            <div class="user-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/trades">Games</a></li>
+                    <li>Cart</li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/about">About Us</a></li>
+                </ul>
+                <div class="user-status">
+                    <% if(!user) { %>
+                        <a href='/users/new'>Sign Up</a>
+                        <a href='/users/login'>Login</a>
+                    <% } else { %>
+                        <a href='/users/profile'>Profile</a>
+                        <a href='/users/logout'>Logout</a>
+                    <% } %>
+                </div>
+                <p class="user-status"><a href="/trades/new">Start Trading</a></p>
+            </div>
+            <% if(errorMessages.length > 0) {%>
+                <% errorMessages.forEach(message=>{%>
+                    <div class='error'>
+                        <%=message%>
+                    </div>
+                <%});%>
+            <%}%>
+            
+            <% if(successMessages.length > 0) {%>
+                <% successMessages.forEach(message=>{%>
+                    <div class='success'>
+                        <%=message%>
+                    </div>
+                <%});%>
+            <%}%>
+        </header>

@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+<div class="article">
+    <section class="item-info">
+        <img src=<%=trade.imgurl%> alt="counter strike game img">
+        <h2><%=trade.title%></h2>
+        <h5>Posted at <%= trade.createdAt.toLocaleString()%> by <%= trade.author.firstName + ' ' + trade.author.lastName %></h5>
+        <h4><%=trade.category%></h4>
+        <div class="item-description"><%=trade.content%></div>
+        <h4><%=trade.status%></h4>
+        <% if(user == trade.author._id) { %>
+            <form>
+                <button type="submit" formmethod="GET" formaction="/trades/<%=trade.id %>/edit">Edit</button>
+                <button type="submit" formmethod="POST" formaction="/trades/<%=trade.id %>?_method=DELETE">Delete</button>
+            </form> 
+        <% }else{ %>
+            <form>
+                <h4>Are you interested in this game?</h4>
+                <% if(trade.status == "Available") { %>
+                <button type="submit" formmethod="GET" formaction="/users/trade/<%=trade.id %>">Trade</button>
+                <% } %>
+                <% if(watchlisted) { %>
+                <button type="submit" formmethod="POST" formaction="/users/trade/offer/<%=trade.id %>">Unwatch</button>
+                <% } else { %>
+                <button type="submit" formmethod="POST" formaction="/trades/<%=trade.id %>/watch">Watch</button>
+                <% } %>
+            </form>
+        <% } %>
+    </section>
+</div>
+<%- include('../partials/footer.ejs') %>
