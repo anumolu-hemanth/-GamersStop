@@ -19,7 +19,7 @@ let host = 'localhost';
 app.set('view engine', 'ejs');
 
 //connect tp database
-mongoose.connect('mongodb://localhost:27017/trades',
+mongoose.connect('mongodb+srv://admin:OmCZMHRdxFuoRVIE@cluster0.e7u7zaj.mongodb.net/?retryWrites=true&w=majority/trades',
 {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 .then(() => {
     //start server
