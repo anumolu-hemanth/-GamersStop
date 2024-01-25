@@ -19,7 +19,7 @@ let host = 'localhost';
 app.set('view engine', 'ejs');
 
 //connect tp database
-mongoose.connect('mongodb+srv://admin:bZp2Y5TRssOiWYvk@cluster0.e7u7zaj.mongodb.net/trades',
+mongoose.connect('mongodb+srv://admin:p7ViJIoiIMzLpfvb@cluster0.e7u7zaj.mongodb.net/trades',
 {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 .then(() => {
     //start server
@@ -36,7 +36,7 @@ app.use(
         secret: "ajfeirf90aeu9eroejfoefj",
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({mongoUrl: 'mongodb+srv://admin:bZp2Y5TRssOiWYvk@cluster0.e7u7zaj.mongodb.net/demos'}),
+        store: new MongoStore({mongoUrl: 'mongodb+srv://admin:p7ViJIoiIMzLpfvb@cluster0.e7u7zaj.mongodb.net/demos'}),
         cookie: {maxAge: 60*60*1000}
         })
 );
