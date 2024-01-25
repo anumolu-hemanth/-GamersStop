@@ -19,8 +19,7 @@ let host = 'localhost';
 app.set('view engine', 'ejs');
 
 //connect tp database
-mongoose.connect('mongodb+srv://admin:p7ViJIoiIMzLpfvb@cluster0.e7u7zaj.mongodb.net/trades',
-{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+mongoose.connect('mongodb+srv://admin:p7ViJIoiIMzLpfvb@cluster0.e7u7zaj.mongodb.net/trades')
 .then(() => {
     //start server
     app.listen(port, host, () => {
